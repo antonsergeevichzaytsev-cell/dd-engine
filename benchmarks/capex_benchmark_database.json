@@ -1,0 +1,239 @@
+{
+  "schema_version": "1.0",
+  "purpose": "CapEx benchmark database. Each entry references PUBLIC source (annual report, NI 43-101, JORC, SEC filing, press release). Used in DD §7.3 to triangulate stated CapEx against sector reality.",
+
+  "usage": "Filter by sector × asset_type × scale × year × jurisdiction. Get range. Compare target asset to range. Anything outside ±20% of range deserves §7.4 hidden CapEx investigation.",
+
+  "data_quality_notes": [
+    "Public CapEx figures often blur scope (does it include power infra? captive port? housing?). Always read footnotes.",
+    "Inflation: 2015 vs 2020 vs 2024 USD are not comparable without escalation. CCI (Chemical CapEx Index) or sector-specific deflators apply.",
+    "Currency: convert to USD at time-of-decision FX, not at time-of-report FX, for emerging markets.",
+    "Single-asset extremes (Norilsk SO2 program, EGA Hot Metal expansion) skew aggregate ranges. Use median, not mean.",
+    "Always cross-check against operational outcome — projects with reported low CapEx that overran can still be useful as 'as-built' benchmarks."
+  ],
+
+  "aluminium_smelter": {
+
+    "greenfield_primary": {
+      "unit": "USD per tonne annual capacity",
+      "range_with_self_generation_hydro": "5500-7500",
+      "range_with_self_generation_gas": "4500-6000",
+      "range_grid_connection_only": "3500-5000",
+      "median": 4800,
+      "notes": "Power infrastructure dominates variance. Hydro greenfield carries dam/turbine CapEx. Modern Middle Eastern gas-fired (EGA Al Taweelah, Sohar) sit in 4500-5500 range. Indian/Chinese coal-fired greenfields are 3500-4500 but exclude SO2 capture and ash handling typically.",
+      "representative_data_points": [
+        {"asset": "EGA Al Taweelah expansion (Phase 1, 2014)", "scope": "390 ktpa with power", "capex_usd": 3500000000, "per_t": 8974, "source": "EGA annual report", "notes": "Includes 1450 MW combined-cycle plant — anomalously high $/t because power CapEx loaded"},
+        {"asset": "Aluminium Bahrain Line 6 (2019)", "scope": "540 ktpa expansion with power", "capex_usd": 3000000000, "per_t": 5556, "source": "Alba press release", "notes": "Includes integrated power station"},
+        {"asset": "Sohar Aluminium (Oman) original (2008)", "scope": "360 ktpa", "capex_usd": 2700000000, "per_t": 7500, "source": "company filings", "notes": "Higher $/t due to greenfield Oman infrastructure"}
+      ]
+    },
+
+    "brownfield_expansion_no_power": {
+      "unit": "USD per tonne incremental annual capacity",
+      "range": "2500-4500",
+      "median": 3200,
+      "notes": "Excludes new power infrastructure. Includes potline, casthouse, anode plant proportionate expansion.",
+      "representative_data_points": [
+        {"asset": "RUSAL Boguchansk completion (2010s)", "scope": "various phase completions", "per_t": 3200, "source": "RUSAL annual reports", "notes": "Numbers vary by phase"}
+      ]
+    },
+
+    "potline_modernization_no_new_pots": {
+      "unit": "USD per tonne annual capacity capacity-gain",
+      "range_busbar_upgrade_amperage_increase": "800-1500",
+      "range_full_pot_overhaul": "1500-2500",
+      "notes": "Capacity gains 10-25% from current-density increase via busbar magnetic compensation, ACD optimisation, point-feeder retrofit."
+    },
+
+    "pot_relining": {
+      "unit": "USD per pot",
+      "range_legacy_soviet_design": "200000-350000",
+      "range_modern_prebake_300ka": "350000-500000",
+      "range_modern_prebake_500ka_plus": "500000-800000",
+      "notes": "Includes cathode block, refractory, busbar maintenance. Excludes pot-line idle time opportunity cost."
+    },
+
+    "anode_plant": {
+      "unit": "USD per tonne annual green anode capacity",
+      "range_greenfield": "1800-2500",
+      "range_baking_furnace_only": "1200-1800",
+      "notes": "Green anode plant includes mixing, pressing, baking, cooling, anode rodding."
+    },
+
+    "casthouse_vdc_billet": {
+      "unit": "USD per tonne annual capacity",
+      "range": "1100-1500",
+      "notes": "Includes melting/holding furnace, degassing, CFF filter, VDC casting machine, sawing, packaging."
+    },
+
+    "casthouse_slab_vdc": {
+      "unit": "USD per tonne annual capacity",
+      "range": "1500-2200",
+      "notes": "Slab casters carry higher unit cost due to larger cross-section and rolling-grade quality requirements."
+    },
+
+    "casthouse_sow_or_t_bar": {
+      "unit": "USD per tonne annual capacity",
+      "range": "600-1000",
+      "notes": "Simplest commodity output. Reference for understanding minimum casthouse CapEx."
+    },
+
+    "spent_potlining_treatment_plant": {
+      "unit": "USD per tonne annual SPL treatment capacity",
+      "range_kiln_based": "2500-4000",
+      "range_hydrometallurgical": "3500-5500",
+      "notes": "Treatment routes vary. Some jurisdictions still permit cement co-processing without dedicated treatment plant."
+    }
+  },
+
+  "copper_concentrator": {
+
+    "greenfield_with_mine": {
+      "unit": "USD per tonne annual Cu in concentrate",
+      "range": "12000-25000",
+      "median": 17000,
+      "notes": "Wide range driven by ore grade, strip ratio, geographic remoteness, infrastructure. Latin American greenfields lower end; African higher end.",
+      "representative_data_points": [
+        {"asset": "Quebrada Blanca Phase 2 (Teck, Chile)", "scope": "300 kt Cu/y", "capex_usd": 6800000000, "per_t": 22667, "source": "Teck annual reports", "year_decision": 2018, "notes": "Mid-altitude Chilean greenfield"},
+        {"asset": "Oyu Tolgoi underground (Rio Tinto, Mongolia)", "scope": "estimated 480 kt Cu/y at steady state", "capex_usd": 7000000000, "per_t": 14583, "source": "Rio Tinto", "notes": "Underground complexity; excludes earlier open-pit infrastructure"}
+      ]
+    },
+
+    "concentrator_only_brownfield_expansion": {
+      "unit": "USD per tonne annual Cu in concentrate",
+      "range": "8000-15000",
+      "notes": "Excludes mine fleet, infrastructure. Mill expansion or new flotation circuit."
+    },
+
+    "tailings_storage_facility": {
+      "unit": "USD per tonne tailings annual",
+      "range_downstream_or_centreline_construction": "8-15",
+      "range_upstream_construction_legacy": "3-7 (but increasing scrutiny)",
+      "notes": "Post-Brumadinho governance and GISTM compliance push costs upward. Closure liability separate."
+    }
+  ],
+
+  "nickel_pgm": {
+
+    "sulphide_concentrator_brownfield": {
+      "unit": "USD per tonne annual Ni in concentrate",
+      "range": "60000-120000",
+      "notes": "Ni concentration in mineralisation is typically 0.5-2% vs Cu 0.5-1.5%, so per-tonne-Ni CapEx scales higher."
+    },
+
+    "laterite_hpal_greenfield": {
+      "unit": "USD per tonne annual Ni in MHP/MSP",
+      "range_indonesian_2020s": "30000-50000",
+      "range_global_2010s_overruns": "60000-100000",
+      "notes": "HPAL projects are notorious for CapEx overruns. Indonesian wave (2020s) ostensibly cheaper but quality concerns. Pre-2020 global HPAL projects typically came in 1.5-2x feasibility CapEx."
+    },
+
+    "nickel_refinery_to_class_one": {
+      "unit": "USD per tonne annual Ni cathode/sulphate",
+      "range": "20000-40000",
+      "notes": "Matte to cathode or sulphate refining. Norilsk legacy assets are lower in implied CapEx due to historical sunk cost."
+    },
+
+    "so2_capture_retrofit": {
+      "unit": "USD per tonne annual S captured",
+      "range": "1500-3000",
+      "notes": "Major CapEx for Norilsk and other legacy non-ferrous smelters with high uncaptured SO2. Includes acid plant typically."
+    }
+  ],
+
+  "gold_hydromet": {
+
+    "cil_greenfield_with_mine_and_infrastructure": {
+      "unit": "USD per ounce annual production",
+      "range_simple_oxide_ore": "1500-3500",
+      "range_complex_refractory": "5000-12000",
+      "notes": "Refractory ore requires BIOX, POX, or ultra-fine grind. Adds dramatically to CapEx."
+    },
+
+    "tailings_retreatment_plant": {
+      "unit": "USD per ounce annual production from retreatment",
+      "range": "800-2500",
+      "notes": "Lower CapEx than greenfield mine + plant because no mining infrastructure. But lower recovery (Anton's UMMC experience: 35-55% on aged tailings) shifts unit economics."
+    },
+
+    "heap_leach_pad_construction": {
+      "unit": "USD per tonne ore on pad",
+      "range_lined_simple": "4-8",
+      "range_lined_complex_winterization": "8-15",
+      "notes": "Liner type, leach pad geometry, climate, regulator-imposed monitoring all drive cost."
+    },
+
+    "cyanide_detox_retrofit": {
+      "unit": "USD per cubic meter daily throughput",
+      "range_so2_air_process": "5000-15000",
+      "range_hydrogen_peroxide": "8000-20000",
+      "notes": "Older sites without detox face mandatory retrofit. International Cyanide Management Code compliance drives requirements."
+    }
+  ],
+
+  "alumina_refinery": {
+
+    "greenfield_bayer": {
+      "unit": "USD per tonne annual alumina capacity",
+      "range": "900-1500",
+      "notes": "Major variables: bauxite quality (digestion intensity), location infrastructure, energy source. Atlantic/CIS lower; Western Australia mid-range; African higher due to greenfield infrastructure."
+    },
+
+    "brownfield_expansion": {
+      "unit": "USD per tonne annual alumina capacity",
+      "range": "500-900",
+      "notes": "Expansion of existing refinery."
+    }
+  ],
+
+  "ferrochrome_smelter": {
+
+    "greenfield": {
+      "unit": "USD per tonne annual ferrochrome capacity",
+      "range": "1500-3000",
+      "notes": "Submerged arc furnace + sintering + briquetting + treatment. South African historic vs Kazakh modern divergent."
+    }
+  ],
+
+  "cross_sector_capex_drivers": {
+
+    "power_infrastructure": {
+      "captive_hydro_greenfield_per_MW": "2500000-4500000",
+      "captive_gas_combined_cycle_per_MW": "900000-1400000",
+      "captive_coal_per_MW": "1500000-2500000 (with FGD)",
+      "grid_connection_substation_per_MW": "200000-500000"
+    },
+
+    "owner_team_engineering_cost": {
+      "fel_1_pct_of_total_capex": "0.1-0.3",
+      "fel_2_pct_of_total_capex": "0.5-1.5",
+      "fel_3_pct_of_total_capex": "2-4",
+      "detailed_engineering_pct": "3-6",
+      "epcm_owner_team_pct": "2-5"
+    },
+
+    "contingency_norms": {
+      "fel_1_pct": "30-50",
+      "fel_2_pct": "20-30",
+      "fel_3_pct": "10-15",
+      "post_authorisation_pct": "5-10",
+      "notes": "Contingency is meant for known unknowns. Vendor decks often show contingency below norm to make project pass IRR threshold — investigate."
+    },
+
+    "escalation_indices": {
+      "chemical_engineering_capex_index_ceci_average_annual_pct": "3-4 in normal years; 8-15 in 2021-2023 inflation spike",
+      "use_for": "Translating older feasibility CapEx forward to current decision year."
+    }
+  },
+
+  "anton_direct_benchmarks_curated": {
+    "purpose": "Anton's direct-experience CapEx data points. Triangulate against public benchmarks. Citable under NDA only.",
+    "todo_anton_to_populate": [
+      "RUSAL 40 ktpa casting line — actual closed CapEx vs FEL 2 estimate vs sector benchmark",
+      "UMMC $550M program — by-phase CapEx breakdown with FEL maturity",
+      "UMMC gold-from-tailings ~50 bn RUB — CapEx by major work package",
+      "RUSAL CapEx portfolio 12 projects — average $/t and benchmark position",
+      "Anode furnace negotiation — pre-negotiation and post-negotiation unit pricing"
+    ]
+  }
+}
