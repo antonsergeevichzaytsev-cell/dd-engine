@@ -1,0 +1,270 @@
+{
+  "schema_version": "1.0",
+  "purpose": "Mitigation playbook. For each risk pattern, what mitigations actually work, what mitigations look reassuring but don't, ranked by effectiveness and feasibility. Use in DD §11.3 Renegotiation Levers and as input to retainer scope conversations.",
+
+  "principle": "A risk register without mitigation analysis is incomplete. Junior DD lists risks. Principal DD ranks mitigations.",
+
+  "structure": {
+    "what_works": "Mitigations Anton has seen execute and deliver outcome on real assets.",
+    "looks_reassuring_but_doesnt_work": "Mitigations that appear in management presentations but fail in execution. These are the trap.",
+    "deal_structure_levers": "Buyer-side mechanisms that price or contain risk without operational fix."
+  },
+
+  "by_risk_category": {
+
+    "power_contract_risk_aluminium": {
+      "risk": "PPA expiry within DD horizon, merchant exposure, tariff escalation",
+      "what_works": [
+        {
+          "mitigation": "Renegotiate PPA pre-close with extended term and capped escalation",
+          "effectiveness": "high",
+          "feasibility_for_buyer": "medium — requires power counterparty cooperation, often regulatory approval",
+          "evidence_anton_seen": "RUSAL Siberian asset renegotiation 2016-2018, multi-year process but achievable"
+        },
+        {
+          "mitigation": "Captive power development (greenfield or acquisition)",
+          "effectiveness": "high",
+          "feasibility": "low — $2-4M/MW CapEx, multi-year delivery",
+          "use_case": "Only when asset acquisition price reflects power vulnerability and buyer has capital depth"
+        },
+        {
+          "mitigation": "Power hedge via long-dated forward contracts",
+          "effectiveness": "medium — caps downside but not upside, basis risk to local tariff",
+          "feasibility": "medium — depends on liquidity of regional power market"
+        }
+      ],
+      "looks_reassuring_but_doesnt_work": [
+        {
+          "mitigation": "Verbal assurances from regulator or power provider",
+          "why_it_fails": "Regulators change. Power provider counterparties get nationalised, privatised, restructured. Verbal commitments don't survive personnel changes.",
+          "frequency_seen": "very high — every Russian regional asset DD has this"
+        },
+        {
+          "mitigation": "Historical stability used as forward-looking comfort",
+          "why_it_fails": "Tariff structures are revised on political cycle, not on commercial cycle. Past 5-year stability does not predict next 5 years."
+        }
+      ],
+      "deal_structure_levers": [
+        "Purchase price reduction reflecting NPV of tariff stress case",
+        "Earn-out tied to actual tariff outcomes over 3y",
+        "Retention escrow for first PPA renewal event",
+        "Seller representation and warranty on PPA terms with material adverse change indemnity"
+      ]
+    },
+
+    "potline_relining_backlog": {
+      "risk": "Pot age concentration creating CapEx wave inadequately provisioned",
+      "what_works": [
+        {
+          "mitigation": "Accelerated relining schedule with in-house cathode plant capacity expansion",
+          "effectiveness": "high",
+          "feasibility": "medium — requires capital and disciplined potline rotation"
+        },
+        {
+          "mitigation": "Cell technology retrofit during relining (current density increase, busbar compensation)",
+          "effectiveness": "high if scope right — captures CapEx for upgrade rather than just maintenance",
+          "feasibility": "medium — requires engineering and trial period"
+        }
+      ],
+      "looks_reassuring_but_doesnt_work": [
+        {
+          "mitigation": "Extended pot life claims based on individual outlier pots",
+          "why_it_fails": "Average pot life is set by failure distribution, not by best-performing pots. Extending pot life beyond design through 'good operations' usually masks deferred relining decision."
+        }
+      ],
+      "deal_structure_levers": [
+        "Working capital adjustment at close to reflect imminent CapEx need",
+        "Deferred consideration mechanism tied to actual pot age at hand-over verified by independent technical review"
+      ]
+    },
+
+    "spent_potlining_legacy_liability": {
+      "risk": "SPL stockpile without treatment route, tightening regulation",
+      "what_works": [
+        {
+          "mitigation": "Dedicated treatment facility construction with multi-asset off-take",
+          "effectiveness": "high if scale justifies",
+          "feasibility": "medium — requires capital and inter-company cooperation",
+          "evidence": "Several Russian and Brazilian groups built consortium SPL plants"
+        },
+        {
+          "mitigation": "Cement co-processing contracts where jurisdiction permits",
+          "effectiveness": "medium — cost-effective but regulator may close loophole",
+          "feasibility": "high in current regulatory regime; high tail risk on regulatory change"
+        }
+      ],
+      "looks_reassuring_but_doesnt_work": [
+        {
+          "mitigation": "On-site storage with engineered cells",
+          "why_it_fails": "Storage is not treatment. Regulator can require treatment at any future point. Tail liability remains on the books.",
+          "frequency": "high — most asset SPL stockpiles fall in this category"
+        }
+      ],
+      "deal_structure_levers": [
+        "Specific indemnity from seller for SPL legacy liability with quantum cap",
+        "Environmental escrow at close",
+        "Seller responsibility for treatment route definition pre-close"
+      ]
+    },
+
+    "carbon_intensity_cbam_exposure": {
+      "risk": "EU customer exposure, CBAM phase-in, customer carbon audit pressure",
+      "what_works": [
+        {
+          "mitigation": "Power purchase from low-carbon source (PPA shift, captive renewables)",
+          "effectiveness": "high — directly addresses Scope 2",
+          "feasibility": "high in jurisdictions with PPA market; medium where regulated tariff dominant"
+        },
+        {
+          "mitigation": "Customer book shift to non-EU markets",
+          "effectiveness": "medium — preserves margin but loses premium VAP demand from EU automotive",
+          "feasibility": "depends on alternative market depth"
+        },
+        {
+          "mitigation": "ASI (Aluminium Stewardship Initiative) certification process",
+          "effectiveness": "high reputational, medium economic — opens premium customer pool willing to pay carbon premium",
+          "feasibility": "medium — 18-36 month process with significant disclosure"
+        }
+      ],
+      "looks_reassuring_but_doesnt_work": [
+        {
+          "mitigation": "Carbon offset purchase",
+          "why_it_fails": "Offsets do not count under CBAM methodology. Customer carbon disclosure requires direct intensity, not net intensity."
+        },
+        {
+          "mitigation": "Reclassifying scope boundaries to exclude high-carbon power",
+          "why_it_fails": "CBAM methodology and ASI methodology will catch reclassification. Customers conducting audits will catch it. Short-term win, long-term credibility damage."
+        }
+      ],
+      "deal_structure_levers": [
+        "Purchase price adjustment for carbon-intensity-driven cost-curve repositioning",
+        "Carbon-CapEx earmark in CapEx plan with milestones"
+      ]
+    },
+
+    "anode_supply_quality_risk": {
+      "risk": "Petroleum coke quality drift driving current efficiency loss",
+      "what_works": [
+        {
+          "mitigation": "Diversified coke supply contracts with quality specifications and rejection rights",
+          "effectiveness": "high",
+          "feasibility": "high — standard procurement discipline"
+        },
+        {
+          "mitigation": "Anode quality testing infrastructure (rapid feedback to procurement)",
+          "effectiveness": "high",
+          "feasibility": "high — modest CapEx for laboratory upgrade"
+        },
+        {
+          "mitigation": "Captive or anchor-supplier relationship with coke producer",
+          "effectiveness": "high for stability; medium for cost optimisation",
+          "feasibility": "low — requires scale and capital"
+        }
+      ],
+      "looks_reassuring_but_doesnt_work": [
+        {
+          "mitigation": "Long-term supply contracts without quality specifications",
+          "why_it_fails": "Contract gives volume security, not quality. Coke quality is set by upstream refinery economics that supplier controls."
+        }
+      ]
+    },
+
+    "tailings_storage_facility_risk": {
+      "risk": "Stewardship gap, upstream construction, post-Brumadinho institutional bar",
+      "what_works": [
+        {
+          "mitigation": "Conversion to dry stacking or paste tailings",
+          "effectiveness": "very high — eliminates wet tailings risk",
+          "feasibility": "low for retrofit on operating mine; medium for greenfield"
+        },
+        {
+          "mitigation": "TSF closure and new downstream-construction facility",
+          "effectiveness": "high",
+          "feasibility": "low — multi-year and material CapEx"
+        },
+        {
+          "mitigation": "GISTM compliance program with independent governance review",
+          "effectiveness": "high reputational, medium operational",
+          "feasibility": "high"
+        }
+      ],
+      "looks_reassuring_but_doesnt_work": [
+        {
+          "mitigation": "Increased monitoring without structural change",
+          "why_it_fails": "Monitoring tells you something is happening; it doesn't stop it. Upstream TSFs in seismic zones cannot be made safe through monitoring alone."
+        }
+      ],
+      "deal_structure_levers": [
+        "Independent technical review trigger in deal documents",
+        "Closure liability indemnity from seller",
+        "Required CapEx for tailings transition as condition precedent to close"
+      ]
+    },
+
+    "sanctions_ownership_cascade": {
+      "risk": "UBO chain sanctions exposure, secondary sanctions for non-Russian buyer",
+      "what_works": [
+        {
+          "mitigation": "UBO restructuring pre-close (asset spin-out, ownership reorganisation)",
+          "effectiveness": "high if executed cleanly",
+          "feasibility": "medium-low — requires multi-party agreement and regulator approval",
+          "warning": "Restructuring done to avoid sanctions can itself trigger evasion designation. Must be done with both Russian and target-jurisdiction sanctions counsel."
+        },
+        {
+          "mitigation": "Direct asset acquisition without inheriting corporate structure",
+          "effectiveness": "high",
+          "feasibility": "medium — requires asset transfer documentation and approvals"
+        }
+      ],
+      "looks_reassuring_but_doesnt_work": [
+        {
+          "mitigation": "Trust or nominee structures masking UBO",
+          "why_it_fails": "Trusts and nominees can be designated themselves. Sophisticated regulators see through these structures."
+        },
+        {
+          "mitigation": "Geographic re-routing of legal headquarters without UBO change",
+          "why_it_fails": "Sanctions follow the natural person, not the company seat."
+        }
+      ],
+      "deal_structure_levers": [
+        "Walk-away right if any UBO chain entity is designated post-signing pre-close",
+        "Specific sanctions indemnity from seller",
+        "Compliance condition precedent to all major milestones"
+      ]
+    },
+
+    "deferred_maintenance_pattern": {
+      "risk": "Maintenance spend below norm, equipment age increasing",
+      "what_works": [
+        {
+          "mitigation": "Catch-up CapEx plan with 5-year horizon, prioritised by criticality",
+          "effectiveness": "high",
+          "feasibility": "high — operational discipline"
+        },
+        {
+          "mitigation": "Maintenance-as-a-service contracts with OEMs for critical equipment",
+          "effectiveness": "medium-high",
+          "feasibility": "medium — depends on OEM presence in jurisdiction"
+        }
+      ],
+      "looks_reassuring_but_doesnt_work": [
+        {
+          "mitigation": "Maintenance budget increase without root-cause analysis",
+          "why_it_fails": "Money without prioritisation goes to the loudest equipment, not the most critical. Need engineering analysis first, then budget."
+        }
+      ]
+    }
+
+  },
+
+  "general_mitigation_principles": {
+    "philosophy": "Mitigation discipline is the test of management quality. Bidder DD discovers risks; counter-bidder DD demands credible mitigation. Asset values rise where management has named risks and shown plan; values fall where management has obscured.",
+    "questions_to_ask_management_about_mitigation": [
+      "Who owns this mitigation, and what is their accountability mechanism?",
+      "What is the budget and timeline?",
+      "What are the dependencies (regulatory, supplier, capital)?",
+      "What is the leading indicator that mitigation is working, and what is the trigger for abandonment?",
+      "Has this approach been tried at this asset or peer asset, and what was the outcome?"
+    ]
+  }
+}
