@@ -224,4 +224,49 @@ def dispatch(message):
     for r in responses:
         rtype = r.get("type", "text")
         if rtype == "text":
-            send_message(r["text"], parse_mode=r.get("parse_mode", "Markdow
+            send_message(r["text"], parse_mode=r.get("parse_mode", "Markdown"))
+        elif rtype == "document":
+            send_document(r["filename"], r["content"], caption=r.get("caption"))
+        else:
+            print(f"Unknown response type: {rtype}")
+
+
+# ============================================================================
+# Main loop
+# ============================================================================
+
+
+def main():
+    print(f"DD Engine Bot starting. Authorized chat: {AUTHORIZED_CHAT_ID}")
+
+    # Load last processed update ID
+    last_update_id = state.load_last_update_id()
+    print(f"Resuming from update_id offset: {last_update_id + 1}")
+
+    # Poll for updates
+    updates = get_updates(offset=last_update_id + 1)
+    print(f"Received {len(updates)} updates")
+
+    if not updates:
+        print("No new updates. Exiting.")
+        return 0
+
+    new_last_id = last_update_id
+    for update in updates:
+        update_id = update.get("update_id", 0)
+        if update_id > new_last_id:
+            new_last_id = update_id
+
+        message = update.get("message")
+        if message:
+            dispatch(message)
+
+    # Persist new update_id
+    state.save_last_update_id(new_last_id)
+    print(f"Processed up to update_id {new_last_id}")
+
+    return 0
+
+
+if __name__ == "__main__":
+    sys.exit(main())
