@@ -1,0 +1,287 @@
+{
+  "schema_version": "1.0",
+  "purpose": "Sector-specific if/then rules. Auto-flag findings in DD §5-§7. Each rule = principal's encoded intuition: 'if metric crosses threshold, escalate as red flag and investigate per follow-up'.",
+
+  "usage": "After data collection for DD §3-§7, the system iterates over rules and prints all triggered red flags into a 'Red Flags Summary' that feeds into §11 Recommendations.",
+
+  "aluminium_smelter": [
+
+    {
+      "id": "AS-RF-01",
+      "title": "Current efficiency declining trend",
+      "condition": "CE_current_year < CE_year_minus_3 - 1.5pct AND CE < 92pct",
+      "severity": "high",
+      "implication": "Anode quality, bath chemistry, or cell instability. Compounds over time. Energy consumption rises, productivity falls.",
+      "investigate": [
+        "Anode S, V, dust content trend over same period",
+        "Bath AlF₃ excess and cryolite ratio control",
+        "Anode effect frequency (proxy for cell instability)",
+        "Did the asset switch alumina or coke supplier in the period?"
+      ],
+      "dd_action": "Quantify $/t cost impact and persistence. Frame in CapEx ask for remediation."
+    },
+
+    {
+      "id": "AS-RF-02",
+      "title": "Specific energy consumption above benchmark with no improvement path",
+      "condition": "kWh_per_kg_Al > 14.0 AND no announced energy reduction program",
+      "severity": "medium",
+      "implication": "Asset is high on global cost curve. Vulnerable to LME downturns. Likely cell technology obsolescence.",
+      "investigate": [
+        "Cell technology generation and amperage",
+        "ACD control discipline",
+        "Pot voltage trend",
+        "Busbar magnetic compensation status"
+      ],
+      "dd_action": "Quantify cost-curve position deterioration risk over 5y. Estimate retrofit CapEx for cell line."
+    },
+
+    {
+      "id": "AS-RF-03",
+      "title": "Pot age concentration risk",
+      "condition": "share_of_pots_above_2000_days > 30pct AND relining_capex_in_5y_plan < threshold",
+      "severity": "high",
+      "implication": "Imminent CapEx wave masked by aggregate CapEx framing. Risk of forced potline shutdown if relining capacity insufficient.",
+      "investigate": [
+        "Pot age distribution histogram",
+        "In-house cathode lining capacity vs need",
+        "Spare cathode block inventory",
+        "Past relining duration per pot trend"
+      ],
+      "dd_action": "Quantify deferred CapEx ($200-600K per pot × applicable count). Negotiate price reduction."
+    },
+
+    {
+      "id": "AS-RF-04",
+      "title": "Spent potlining stockpile without disposal route",
+      "condition": "SPL_stockpile_tonnes > 10000 AND no_disclosed_treatment_capex AND regulator_tightening",
+      "severity": "high",
+      "implication": "Hazardous waste legacy. Tightening regulation can crystallise treatment obligation into mandatory CapEx within 2-5 years.",
+      "investigate": [
+        "Stockpile tonnage and composition",
+        "Regulator notices issued",
+        "Comparable jurisdiction treatment routes and unit cost",
+        "Local treatment infrastructure availability"
+      ],
+      "dd_action": "Treatment cost $200-500/t. Calculate full liability. Confirm provisioning in financials."
+    },
+
+    {
+      "id": "AS-RF-05",
+      "title": "Power tariff sensitivity above C1 break-even at stress case",
+      "condition": "stress_case_power_tariff_implies_C1 > current_LME_price - sustaining_capex_per_t",
+      "severity": "high",
+      "implication": "Asset cash-loss at plausible downside. Power contract structure is deal-defining.",
+      "investigate": [
+        "PPA renewal terms and merchant exposure",
+        "Tariff escalation mechanism",
+        "Historical max tariff in 10y window",
+        "Regulatory trajectory in jurisdiction"
+      ],
+      "dd_action": "Run base/upside/downside power scenarios. Position on cost-curve in each."
+    },
+
+    {
+      "id": "AS-RF-06",
+      "title": "Carbon intensity vs EU export book",
+      "condition": "scope_1_plus_2_t_co2_per_t_Al > 8.0 AND EU_export_revenue_share > 20pct",
+      "severity": "medium",
+      "implication": "CBAM cost imposition material. Customer pressure for carbon disclosure rising.",
+      "investigate": [
+        "Verified carbon intensity (third-party)",
+        "EU customer contract structure (long-term vs spot)",
+        "Asset roadmap for power decarbonisation"
+      ],
+      "dd_action": "Model CBAM cost across phase-in. Reduce EU export book value."
+    },
+
+    {
+      "id": "AS-RF-07",
+      "title": "Anode plant capacity bottleneck vs potline expansion",
+      "condition": "potline_capacity_growth_planned > anode_plant_capacity_in_5y",
+      "severity": "medium",
+      "implication": "Hidden CapEx for anode plant expansion typically $1500-2500/t. Often missing from announced expansion CapEx.",
+      "investigate": [
+        "Anode plant baking furnace utilisation",
+        "Pet coke supply contract structure for expansion",
+        "Pitch supply (often single-source)"
+      ],
+      "dd_action": "Add anode plant CapEx to total expansion cost."
+    },
+
+    {
+      "id": "AS-RF-08",
+      "title": "Process safety incident pattern",
+      "condition": "process_safety_events_5y > 0 AND no_documented_root_cause_remediation",
+      "severity": "high",
+      "implication": "Operational culture issue. Fatality risk. Insurance and regulator exposure.",
+      "investigate": [
+        "Event log with root cause and corrective action status",
+        "External safety audit reports if any",
+        "Regulator inspection findings"
+      ],
+      "dd_action": "Walk-away trigger if multiple fatalities without remediation. Otherwise price for HSE upgrade CapEx."
+    },
+
+    {
+      "id": "AS-RF-09",
+      "title": "Captive workforce skill pipeline drying up",
+      "condition": "asset_in_small_town AND local_population_declining AND no_active_apprenticeship",
+      "severity": "medium",
+      "implication": "Many Russian/Indian/Canadian smelters in single-asset towns. Workforce dependency on local schools. 10y workforce risk.",
+      "investigate": [
+        "Town population trend",
+        "Apprenticeship and technical college pipeline",
+        "Workforce age distribution",
+        "Retention KPIs"
+      ],
+      "dd_action": "Quantify operational risk over 10y. Possible discount factor on terminal value."
+    },
+
+    {
+      "id": "AS-RF-10",
+      "title": "Sanctions cascade risk through ownership chain",
+      "condition": "ubo_chain_includes_jurisdiction_with_secondary_sanctions_risk AND buyer_has_US_EU_market_exposure",
+      "severity": "high",
+      "implication": "Secondary sanctions can capture buyer downstream from acquisition. Risk grows with regulatory tightening.",
+      "investigate": [
+        "Full UBO chain disclosure",
+        "Past designation history for chain entities",
+        "Buyer compliance team review"
+      ],
+      "dd_action": "Independent sanctions counsel engagement. Walk-away if material exposure."
+    }
+
+  ],
+
+  "copper_concentrator": [
+    {
+      "id": "CC-RF-01",
+      "title": "Recovery declining despite stable feed grade",
+      "condition": "Cu_recovery_pct_year_minus_3 - Cu_recovery_pct_current > 2pct AND ore_type_mix_stable",
+      "severity": "high",
+      "implication": "Throughput pushed beyond mill design at coarser grind, or flotation circuit overloaded. Stable trend = ore-driven; declining = ops-driven.",
+      "investigate": [
+        "Mill throughput vs design",
+        "Grind size P80 trend",
+        "Flotation residence time",
+        "Reagent dosage and chemistry changes"
+      ]
+    },
+    {
+      "id": "CC-RF-02",
+      "title": "TSF stewardship gap",
+      "condition": "TSF_type IN [upstream] AND last_independent_review_age_years > 3",
+      "severity": "high",
+      "implication": "Post-Brumadinho institutional bar. Upstream construction TSFs in seismic zones are de-facto un-financeable for many buyers.",
+      "investigate": [
+        "TSF construction type and seismic exposure",
+        "GISTM compliance position",
+        "Closure plan and provisioning"
+      ]
+    },
+    {
+      "id": "CC-RF-03",
+      "title": "Concentrate offtake concentration",
+      "condition": "top_3_smelter_offtake_share > 70pct AND offtake_renewals_within_3y",
+      "severity": "medium",
+      "implication": "TC/RC pricing power asymmetry. Single-smelter dependency for landlocked assets."
+    }
+  ],
+
+  "nickel_pgm": [
+    {
+      "id": "NP-RF-01",
+      "title": "SO₂ capture regulatory gap",
+      "condition": "SO2_capture_pct < 95 AND regulator_announced_tightening",
+      "severity": "high",
+      "implication": "Mandatory CapEx for emission control within 5-7y. Sulphuric acid market for captured S adds further complexity.",
+      "investigate": [
+        "Current capture efficiency",
+        "Regulator timeline",
+        "Acid market access and pricing"
+      ]
+    },
+    {
+      "id": "NP-RF-02",
+      "title": "PGM offtake disadvantageous structure",
+      "condition": "PGM_offtake_structure includes refining_at_third_party AND credit_share < 70pct_of_PGM_value",
+      "severity": "medium",
+      "implication": "PGM credits 20-40% of revenue for some nickel projects. Refining-at-third-party structures can leak 20-40% of credit value."
+    }
+  ],
+
+  "gold_hydromet": [
+    {
+      "id": "GH-RF-01",
+      "title": "Inferred resource share excessive",
+      "condition": "inferred_share_of_resource > 30pct AND deal_being_priced_on_resource_not_reserve",
+      "severity": "high",
+      "implication": "Inferred resources are not bankable. Pricing deal on resource curve implies optimistic conversion assumption."
+    },
+    {
+      "id": "GH-RF-02",
+      "title": "Tailings retreatment testwork inadequate",
+      "condition": "asset_type IN [tailings_retreatment] AND testwork_done_on_aged_samples == false",
+      "severity": "high",
+      "implication": "Aged tailings recovery 35-55% vs fresh ore 75-90%. Project IRR sensitivity to this assumption is dominant.",
+      "investigate": [
+        "Sample age at testwork",
+        "Cyanide consumption per t",
+        "Carbon loading kinetics on aged feed"
+      ]
+    },
+    {
+      "id": "GH-RF-03",
+      "title": "Cyanide detox capacity stress-test deficit",
+      "condition": "detox_capacity_design_throughput < CIL_max_throughput_x_1_3",
+      "severity": "medium",
+      "implication": "Detox often sized for nominal throughput, not stress events. Cyanide release events have regulatory and reputational consequences."
+    }
+  ],
+
+  "cross_sector": [
+    {
+      "id": "X-RF-01",
+      "title": "FEL stage misrepresentation",
+      "condition": "claimed_estimate_accuracy_pct < +/-15 AND engineering_complete_pct < 30",
+      "severity": "high",
+      "implication": "Vendor claiming FEL 3 accuracy on FEL 2-stage scope. Estimate will move 15-30% during true FEL 3.",
+      "dd_action": "Adjust CapEx central estimate upward by 15-20%. Adjust contingency upward."
+    },
+    {
+      "id": "X-RF-02",
+      "title": "Deferred maintenance signal",
+      "condition": "maintenance_spend_as_pct_revenue < 3 AND no_announced_catch_up",
+      "severity": "medium",
+      "implication": "Below 3% sustained = deferred maintenance. Catch-up CapEx typically 2-3y of normal annual spend."
+    },
+    {
+      "id": "X-RF-03",
+      "title": "Single-source critical dependency",
+      "condition": "critical_input_supplier_count == 1 AND supplier_in_jurisdiction_with_political_risk",
+      "severity": "medium",
+      "implication": "Single-source for anode, reagents, energy components, OEM spares. Diversification CapEx may be required."
+    },
+    {
+      "id": "X-RF-04",
+      "title": "Closure provisioning gap",
+      "condition": "provisioned_closure_cost < estimated_true_closure_cost_x_0_6",
+      "severity": "medium",
+      "implication": "Closure obligation under-provisioned. Reserve adjustment will flow through equity at acquisition."
+    },
+    {
+      "id": "X-RF-05",
+      "title": "Vendor refusal of standard DD documents under NDA",
+      "condition": "PPA OR offtake OR resource_statement OR audit_letters not_shared_under_signed_NDA",
+      "severity": "high",
+      "implication": "Active DD requires document disclosure under NDA. Refusal indicates either material adverse information or unprofessional process. Either is walk-away signal."
+    }
+  ],
+
+  "scoring_to_recommendations": {
+    "high_severity_count_above_2": "Walk-away or material price reduction required.",
+    "medium_severity_count_above_4": "Caution. Price for risk and embed in deal structure (earn-outs, escrows, reps and warranties).",
+    "low_severity_count_dominant": "Proceed with standard risk allocation."
+  }
+}
