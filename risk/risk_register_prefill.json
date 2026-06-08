@@ -1,0 +1,89 @@
+{
+  "schema_version": "1.0",
+  "purpose": "Pre-populate Risk Register §5 of any DD. Filter by sector + asset_type. Anton scores L×I and writes mitigation column.",
+
+  "categories": {
+
+    "1_geology_reserves": {
+      "applies_to": ["mine", "hydromet", "mixed"],
+      "risks": [
+        {"id": "G1", "title": "Reserve classification overstated", "default_L": 3, "default_I": 5, "trigger_questions": ["JORC/NI 43-101 compliance?", "Drill density vs reported tonnage?", "QPs signing off — independent?"]},
+        {"id": "G2", "title": "Grade dilution vs feasibility", "default_L": 3, "default_I": 4, "trigger_questions": ["Reconciliation between LOM plan and actual mill feed?"]},
+        {"id": "G3", "title": "Inferred resource share too high", "default_L": 3, "default_I": 4, "trigger_questions": ["Inferred % of total resource? >30% = red flag for bankable DD"]},
+        {"id": "G4", "title": "Resource depletion timeline vs CapEx amortization", "default_L": 2, "default_I": 5, "trigger_questions": ["LOM vs project payback period — gap?"]}
+      ]
+    },
+
+    "2_processing_metallurgy": {
+      "applies_to": ["smelter", "refinery", "hydromet", "mill", "mixed"],
+      "risks": [
+        {"id": "P1", "title": "Recovery declining vs commissioning baseline", "default_L": 3, "default_I": 4, "trigger_questions": ["Recovery curve last 5 years?", "Reason for any drop — feedstock change or equipment degradation?"]},
+        {"id": "P2", "title": "Specific energy consumption above benchmark", "default_L": 3, "default_I": 3, "trigger_questions": ["kWh/t vs sector benchmark?", "Trend?"]},
+        {"id": "P3", "title": "Reagent / consumables supply concentration", "default_L": 2, "default_I": 4, "trigger_questions": ["Single-source critical reagents?"]},
+        {"id": "P4", "title": "Process bottleneck not addressed in CapEx plan", "default_L": 3, "default_I": 4, "trigger_questions": ["Where is the throughput-limiting step?", "Does CapEx plan address it?"]},
+        {"id": "P5_aluminium", "title": "Anode quality issues / current efficiency drop", "applies_only_to_sectors": ["aluminium"], "default_L": 3, "default_I": 4, "trigger_questions": ["Current efficiency trend?", "Anode supplier change?"]},
+        {"id": "P6_aluminium", "title": "Potline age and relining cycle", "applies_only_to_sectors": ["aluminium"], "default_L": 3, "default_I": 5, "trigger_questions": ["Avg potline age? Next reline window? CapEx provisioned?"]}
+      ]
+    },
+
+    "3_energy_utilities": {
+      "applies_to": ["smelter", "refinery", "hydromet", "mill", "mixed"],
+      "risks": [
+        {"id": "E1", "title": "Power tariff escalation beyond contract", "default_L": 3, "default_I": 5, "trigger_questions": ["Tariff structure?", "Contract end date?", "Renegotiation history?"]},
+        {"id": "E2", "title": "Power supply security", "default_L": 2, "default_I": 5, "trigger_questions": ["Grid dependency?", "Backup generation?", "Historical outages?"]},
+        {"id": "E3", "title": "Carbon pricing / CBAM exposure", "default_L": 4, "default_I": 4, "trigger_questions": ["Scope 1+2 intensity?", "Export markets exposed to CBAM?"]},
+        {"id": "E4", "title": "Water supply constraint", "default_L": 2, "default_I": 4, "trigger_questions": ["Water source and rights?", "Drought sensitivity?"]}
+      ]
+    },
+
+    "4_logistics_supply": {
+      "applies_to": ["all"],
+      "risks": [
+        {"id": "L1", "title": "Export route concentration", "default_L": 3, "default_I": 4, "trigger_questions": ["Primary export route?", "Alternative routes? Cost delta?"]},
+        {"id": "L2", "title": "Logistics tariff escalation", "default_L": 3, "default_I": 3, "trigger_questions": ["Rail/port tariff trend last 3 years?"]},
+        {"id": "L3", "title": "Sanctions on shipping / insurance / banking", "applies_only_to_geos": ["russia", "cis"], "default_L": 4, "default_I": 5, "trigger_questions": ["Western insurance available?", "USD payment chains?"]},
+        {"id": "L4", "title": "Feedstock import dependency", "default_L": 2, "default_I": 4, "trigger_questions": ["Imported feedstock %?", "Origin diversification?"]}
+      ]
+    },
+
+    "5_regulatory_permitting": {
+      "applies_to": ["all"],
+      "risks": [
+        {"id": "R1", "title": "License renewal risk", "default_L": 2, "default_I": 5, "trigger_questions": ["License expiry?", "Renewal history? Conditions?"]},
+        {"id": "R2", "title": "Tax regime change exposure", "default_L": 3, "default_I": 4, "trigger_questions": ["Resource rent tax history?", "Royalty structure changes?"]},
+        {"id": "R3", "title": "Environmental permit conditions tightening", "default_L": 3, "default_I": 4, "trigger_questions": ["Emission limits trend?", "Pending regulatory changes?"]},
+        {"id": "R4", "title": "Resource nationalism / contract renegotiation", "default_L": 2, "default_I": 5, "trigger_questions": ["Government stake?", "Past renegotiation precedent in country?"]}
+      ]
+    },
+
+    "6_sanctions_compliance": {
+      "applies_to": ["all"],
+      "risks": [
+        {"id": "S1", "title": "OFAC / EU sanctions on owner", "default_L": 3, "default_I": 5, "trigger_questions": ["Ownership chain to UBO?", "Sanctioned individuals at any level?"]},
+        {"id": "S2", "title": "Secondary sanctions exposure for buyer", "default_L": 3, "default_I": 5, "trigger_questions": ["Buyer's other US/EU exposure?", "Banking chains?"]},
+        {"id": "S3", "title": "Counterparty KYC failures", "default_L": 2, "default_I": 4, "trigger_questions": ["Customer concentration?", "Customer KYC quality?"]},
+        {"id": "S4", "title": "Equipment / parts ban", "default_L": 3, "default_I": 4, "trigger_questions": ["Critical equipment from sanctioned jurisdictions?", "Alternative supply?"]}
+      ]
+    },
+
+    "7_esg_community_closure": {
+      "applies_to": ["all"],
+      "risks": [
+        {"id": "ES1", "title": "Tailings storage facility (TSF) stability", "applies_only_to": ["mine", "hydromet"], "default_L": 2, "default_I": 5, "trigger_questions": ["TSF age, type, stewardship review?", "GISTM compliance?"]},
+        {"id": "ES2", "title": "Social license / community conflict", "default_L": 2, "default_I": 4, "trigger_questions": ["Community grievance history?", "Indigenous land claims?"]},
+        {"id": "ES3", "title": "Closure cost provisioning gap", "default_L": 3, "default_I": 4, "trigger_questions": ["Closure plan filed?", "Provisioned vs estimated?"]},
+        {"id": "ES4", "title": "Scope 3 carbon disclosure pressure", "default_L": 3, "default_I": 3, "trigger_questions": ["Major customers requiring Scope 3?", "Current disclosure status?"]}
+      ]
+    },
+
+    "8_technology_equipment": {
+      "applies_to": ["all"],
+      "risks": [
+        {"id": "T1", "title": "Core equipment age / obsolescence", "default_L": 3, "default_I": 4, "trigger_questions": ["Vintage of critical equipment?", "OEM support availability?"]},
+        {"id": "T2", "title": "Spares supply concentration", "default_L": 3, "default_I": 3, "trigger_questions": ["Critical spares stock?", "Lead times?"]},
+        {"id": "T3", "title": "Process technology behind sector benchmark", "default_L": 2, "default_I": 4, "trigger_questions": ["Best-available-technology gap?", "CapEx to close it?"]},
+        {"id": "T4", "title": "Digital / automation maturity", "default_L": 2, "default_I": 3, "trigger_questions": ["MES / SCADA coverage?", "Predictive maintenance in place?"]}
+      ]
+    }
+  }
+}
