@@ -1,0 +1,50 @@
+name: DD Engine Bot poll
+
+on:
+  schedule:
+    # Every 5 minutes — minimum allowed on GitHub Actions free tier
+    - cron: "*/5 * * * *"
+  workflow_dispatch: {}
+
+permissions:
+  contents: write  # for committing state back
+
+concurrency:
+  group: dd-bot-poll
+  cancel-in-progress: false  # let one run finish before next starts
+
+jobs:
+  poll:
+    runs-on: ubuntu-latest
+    timeout-minutes: 4  # well under the 5-min cron
+
+    steps:
+      - name: Checkout repo
+        uses: actions/checkout@v4
+        with:
+          token: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+
+      - name: Run DD bot poll
+        env:
+          TELEGRAM_BOT_TOKEN: ${{ secrets.TELEGRAM_BOT_TOKEN }}
+          TELEGRAM_CHAT_ID: ${{ secrets.TELEGRAM_CHAT_ID }}
+          DEEPSEEK_API_KEY: ${{ secrets.DEEPSEEK_API_KEY }}
+        run: |
+          python bot/dd_bot.py
+
+      - name: Commit state if changed
+        run: |
+          git config user.name "dd-engine-bot"
+          git config user.email "dd-engine-bot@users.noreply.github.com"
+          if [[ -n "$(git status --porcelain data/)" ]]; then
+            git add data/
+            git commit -m "Update DD bot state [skip ci]"
+            git push
+          else
+            echo "No state changes to commit."
+          fi
