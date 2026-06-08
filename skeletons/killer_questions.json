@@ -1,0 +1,225 @@
+{
+  "schema_version": "1.0",
+  "last_updated": "2026-06-08",
+  "purpose": "Killer-question library for DD management sessions. Filter by sector × asset_type × deal_stage. Each question is anchored to a typical DD finding and designed to expose information management would prefer not to volunteer.",
+
+  "usage": "After DD §3-§8 are populated, the system picks 5-7 questions where DD findings created a 'gap' — management answer either confirms the finding or reveals new information. Anton finalises the question list.",
+
+  "structure_principle": "Best killer questions are: (1) specific to one numerical finding, (2) non-leading (don't disclose your view), (3) require a concrete answer (not 'we are working on it'), (4) include a follow-up trap if first answer is evasive.",
+
+  "deal_stages": {
+    "pre_bid": "Before LOI. Goal: confirm or kill the deal at minimum DD spend.",
+    "ic_submission": "Bid prep. Goal: surface risks to price into valuation.",
+    "pre_signing": "Final DD. Goal: catch last-minute red flags.",
+    "post_close_100day": "Integration. Goal: validate vendor representations against operational reality."
+  },
+
+  "questions_by_sector": {
+
+    "aluminium_smelter": {
+      "power_contract": [
+        {
+          "question": "Walk us through the tariff escalation mechanism in the current power agreement, the take-or-pay obligations, and the renewal terms or merchant exposure post-expiry.",
+          "anchor_finding": "Power = 30-50% of C1. Tariff structure is the single highest sensitivity. Vendors typically gloss with 'stable long-term contract' framing.",
+          "follow_up_if_evasive": "Could you share the actual PPA document under NDA, or at minimum the tariff curve assumed in your business plan for the next 10 years with a sensitivity range?",
+          "red_flag_if": "Vendor cites 'stable' without naming a mechanism, declines PPA share even under NDA, or stress-tested cases not available."
+        },
+        {
+          "question": "Who is the counterparty on the PPA, and what is their credit quality and operational reliability track record?",
+          "anchor_finding": "Counterparty risk on PPA provider is rarely surfaced in management decks but can dominate downside.",
+          "follow_up_if_evasive": "Has there been any historical disruption to power supply, contractual or operational? When was the last force majeure invoked?"
+        },
+        {
+          "question": "What is the asset's $/MWh today versus the regional industrial benchmark, and how is that gap maintained?",
+          "anchor_finding": "If gap is large and favourable, there is usually a sustainability question (subsidy expiry, captive resource depletion, regulatory change).",
+          "follow_up_if_evasive": "Is the favourable tariff tied to a specific contractual provision, a captive asset, a subsidy regime, or a vintage agreement? What is the trigger for re-pricing?"
+        }
+      ],
+      "potline_relining": [
+        {
+          "question": "Please share the pot age distribution by potline as of the most recent quarter-end and the relining schedule for the next 5 years.",
+          "anchor_finding": "Pot age concentration > 1800 days indicates CapEx wave. Often hidden behind 'all pots within design life' framing.",
+          "follow_up_if_evasive": "What is the standard pot life assumption used in the technical reserve report, and how many pots are currently above that threshold?",
+          "red_flag_if": "Distribution not available within 48h, average pot age understated, relining CapEx absent from 5-year plan."
+        },
+        {
+          "question": "Has there been any pot failure event in the last 5 years (tap-out, cell explosion, frozen metal incident)? Provide root-cause analysis and remediation status.",
+          "anchor_finding": "Pot failures often hidden in 'unplanned downtime' aggregate. Cell explosions are HSE deal-breakers."
+        }
+      ],
+      "anode_supply": [
+        {
+          "question": "What is the petroleum coke supply structure — captive, contracted, spot — and the sulphur, vanadium, nickel content distribution over the last 24 months?",
+          "anchor_finding": "Anode quality drives current efficiency, SO₂ emissions, and pot life. Pet coke market is consolidating; suppliers often locked in by major aluminium groups.",
+          "follow_up_if_evasive": "Have you had to accept off-specification coke in any quarter in the last 24 months? What was the operational impact?"
+        },
+        {
+          "question": "What is the anode plant nameplate capacity versus current potline consumption, and what is the contingency for unplanned anode plant outage?",
+          "anchor_finding": "Anode plant fire or unplanned shutdown can shut a smelter within days. Backup supply contracts are critical and rarely tested."
+        }
+      ],
+      "cbam_carbon": [
+        {
+          "question": "What is the asset's Scope 1 and Scope 2 carbon intensity per tonne aluminium, calculated to CBAM methodology, and what share of revenue is from EU customers?",
+          "anchor_finding": "CBAM phases in 2026-2034. Asset cost-curve position can shift materially for EU-exposed assets. Many sellers haven't done the math.",
+          "follow_up_if_evasive": "Has the asset undergone third-party verification (ASI, ResponsibleSteel-equivalent for aluminium, customer audit)? If not, on what basis is the intensity claim supported?"
+        }
+      ],
+      "spent_potlining": [
+        {
+          "question": "How much spent potlining is currently stockpiled on site, and what is the planned treatment route and CapEx?",
+          "anchor_finding": "SPL is hazardous waste (cyanide, fluoride). Legacy stockpiles at older smelters can be 50,000-200,000 tonnes. Treatment CapEx $200-500/t.",
+          "follow_up_if_evasive": "Has the regulator issued any notice on SPL handling, and what is the asset's compliance position relative to peers in the same jurisdiction?"
+        }
+      ],
+      "casthouse_vap": [
+        {
+          "question": "What is the VAP premium realisation per product over LME for the last 3 years, and what is the top-3 customer concentration on VAP revenue?",
+          "anchor_finding": "VAP premium and customer concentration drive realised cash margin. Often masked by aggregate 'realised price' disclosure."
+        }
+      ],
+      "hse_process_safety": [
+        {
+          "question": "Please provide the process-safety incident log for the last 5 years (molten metal, gas, electrical, fall-from-height) with severity, root cause, and corrective action status.",
+          "anchor_finding": "LTIFR is a lagging summary. Process-safety event detail reveals operational culture. Most decks show LTIFR; vendors rarely volunteer event log.",
+          "follow_up_if_evasive": "Has the asset had a fatality in the last 10 years? If yes, please walk us through the investigation findings and current status of corrective actions."
+        }
+      ]
+    },
+
+    "aluminium_downstream": {
+      "casting": [
+        {
+          "question": "What is the CFF filter replacement frequency per casting line, and how has it trended over the last 24 months?",
+          "anchor_finding": "Filter replacement frequency rising = melt cleanliness problem upstream (alumina, anode, hold furnace contamination)."
+        },
+        {
+          "question": "What is the quality reject rate by product (slab, billet, foil stock) and how do customer claims trend?"
+        }
+      ],
+      "rolling_mill": [
+        {
+          "question": "What is the rolling-mill capacity utilisation, the bottleneck operation (hot vs cold vs finishing), and the planned CapEx for capacity de-bottlenecking?"
+        }
+      ]
+    },
+
+    "copper_concentrator": {
+      "recovery": [
+        {
+          "question": "Provide the Cu recovery curve over the last 5 years by quarter, segmented by ore type (oxide, transitional, sulphide), and the planned grind size by year.",
+          "anchor_finding": "Recovery decline is often blamed on 'ore variability' when it's actually mill throughput pushed beyond design point at coarser grind."
+        },
+        {
+          "question": "What is the concentrate grade vs design specification, and what penalties apply for off-spec at the smelter receiving end?"
+        }
+      ],
+      "tailings": [
+        {
+          "question": "What is the TSF design (upstream, downstream, centreline), the latest independent stewardship review date, and the GISTM compliance position?",
+          "anchor_finding": "Post-Brumadinho (2019) tailings governance is non-negotiable for institutional buyers. Upstream-construction TSFs in seismic zones are deal-breakers."
+        }
+      ],
+      "smelter_logistics": [
+        {
+          "question": "What is the concentrate sales agreement structure — exclusive offtake, multi-smelter portfolio, spot — and what TC/RC has been realised over the last 3 years vs benchmark?"
+        }
+      ]
+    },
+
+    "nickel_pgm": {
+      "feed_quality": [
+        {
+          "question": "What is the feed grade trend over the last 5 years, the planned mining sequence, and the implied head grade for the next 5 years?",
+          "anchor_finding": "Norilsk-style sulphide feeds with declining PGM credit can shift project economics materially."
+        }
+      ],
+      "so2_capture": [
+        {
+          "question": "What is the SO₂ capture efficiency, the captured-sulphur disposition (sulphuric acid sales market), and the regulatory trajectory for emission limits?",
+          "anchor_finding": "Norilsk Nickel SO₂ remediation is multi-billion CapEx. Smaller assets in similar position carry similar regulatory exposure."
+        }
+      ],
+      "pgm_stream": [
+        {
+          "question": "What is the PGM-credit realisation methodology — anode slimes, separate stream, refined sales — and the offtake terms?",
+          "anchor_finding": "PGM credits can be 20-40% of revenue for Russian/South African nickel. Offtake structure (who refines, who keeps the credit) is critical."
+        }
+      ]
+    },
+
+    "gold_hydromet": {
+      "reserves_and_recovery": [
+        {
+          "question": "Provide the reserve and resource breakdown (proven, probable, measured, indicated, inferred) per JORC/NI 43-101, with the cut-off grade assumption and the recovery model basis.",
+          "anchor_finding": "Inferred share > 30% of total resource is a bankability red flag. Cut-off grade selected for marketing reserves rather than mining reality is common."
+        },
+        {
+          "question": "What is the CIL/CIP recovery curve achieved last 12 months vs the feasibility model, and the carbon loading by circuit?"
+        }
+      ],
+      "tailings_retreatment": [
+        {
+          "question": "If retreatment plant: what is the testwork basis for recovery on aged tailings, and was the testwork done on samples of representative weathering age?",
+          "anchor_finding": "Aged tailings recovery 35-55% vs fresh-ore 75-90% (Anton's UMMC experience). Project economics shift dramatically if testwork done on insufficiently aged material."
+        }
+      ],
+      "cyanide_management": [
+        {
+          "question": "What is the cyanide detox circuit design, the discharge water quality compliance margin, and the cyanide code compliance position (International Cyanide Management Code)?",
+          "anchor_finding": "Detox capacity often sized for design throughput, not for stress events. Cyanide release events are regulatory and reputational catastrophes."
+        }
+      ]
+    }
+  },
+
+  "questions_by_deal_dimension": {
+
+    "fel_maturity": [
+      {
+        "question": "For each major CapEx item in your 5-year plan, please indicate the FEL stage achieved (FEL 1 conceptual, FEL 2 pre-feasibility, FEL 3 feasibility/FEED) and the underlying estimate accuracy claim.",
+        "anchor_finding": "Vendors routinely present FEL 2-stage estimates with FEL 3 accuracy claims. The gap between claimed and actual maturity is where 60% of CapEx overruns are seeded.",
+        "follow_up_if_evasive": "May we see the engineering deliverables list (P&IDs issued, equipment lists frozen, long-lead POs authorised) supporting the stage classification?"
+      }
+    ],
+
+    "contracting_strategy": [
+      {
+        "question": "For the proposed CapEx, what is the contracting strategy (single EPC, multi-package EPCM, owner team) and what is the rationale?",
+        "anchor_finding": "Single-EPC carries 15-25% interface premium on brownfield expansions (Anton's RUSAL casting case). Choice should match owner-team metallurgical depth, not just consultant default."
+      }
+    ],
+
+    "ownership_and_control": [
+      {
+        "question": "Please provide the UBO chain to natural persons, including any nominee structures, golden shares, board appointment rights, and any pledged shares to lenders.",
+        "anchor_finding": "Russia/CIS assets often have complex pledge structures. Sanctions exposure can cascade up the chain unexpectedly."
+      },
+      {
+        "question": "Has any natural person in the ownership chain been subject to sanctions designation, sanctions investigation, or compliance inquiry in any jurisdiction?"
+      }
+    ],
+
+    "sanctions_overlay": [
+      {
+        "question": "Has the asset, its operator, its parent, any UBO, or any named officer been subject to OFAC, EU, UK, Swiss, Japanese, or Australian sanctions designation or designation review in the last 10 years?",
+        "anchor_finding": "Designation history matters even when current status is clear. Re-designation risk is a structural deal factor."
+      },
+      {
+        "question": "What is the asset's export book exposure to sanctions-restricted markets, and what alternative logistics routes (insurance, banking, shipping) have been established?"
+      }
+    ]
+  },
+
+  "anti_patterns_in_management_answers": {
+    "purpose": "Recognise evasion patterns. Each calls for the documented follow-up.",
+    "patterns": [
+      {"pattern": "We are working on it", "interpretation": "No defined target date or owner. Push for both."},
+      {"pattern": "Industry-standard", "interpretation": "Often means median, not top-quartile. Ask for actual number vs sector benchmark cited."},
+      {"pattern": "Within design parameters", "interpretation": "Design parameters from when? Most aluminium smelters were designed for current densities below current operation."},
+      {"pattern": "Confidential commercial information", "interpretation": "Legitimate in some cases. But sellers in active DD must share under NDA. Refusal to share under signed NDA = walk-away trigger."},
+      {"pattern": "Our auditors signed off", "interpretation": "Auditor opinion is on financial statements, not on operational reality or future CapEx adequacy."},
+      {"pattern": "We expect to mitigate this", "interpretation": "Mitigation is a plan, not a result. Ask for CapEx, timeline, owner, dependencies."}
+    ]
+  }
+}
