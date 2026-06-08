@@ -1,0 +1,391 @@
+{
+  "schema_version": "2.0",
+  "last_updated": "2026-06-08",
+  "purpose": "Principal-grade KG. Each case: war story (setup/conflict/decision/result/lesson), layered citation (public/NDA/private), industry benchmark intel gained, patent linkages.",
+
+  "citation_layers": {
+    "public": "Citable on any platform call, LinkedIn, written DD. No NDA risk. Default for screening.",
+    "nda_with_buyer": "Citable in DD under executed buyer NDA. Specific numbers, named scopes. Not for unverified platforms.",
+    "private_retainer": "Inside retainer engagements with signed scope only. Mechanism-level detail, internal names, undisclosed decisions."
+  },
+
+  "cases": [
+    {
+      "id": "ummc-2024-fel123",
+      "title": "Project Director, $550M CapEx program, FEL 1 to FEL 3",
+      "company": "UMMC",
+      "years": "2023-2026",
+      "role": "Project Director",
+      "tags": ["non-ferrous", "capex", "fel1", "fel2", "fel3", "owner-side", "stage-gating", "ic-submission"],
+      "scale": {"usd_program": 550000000, "note": "Aggregate program scope; single-year disclosed CapEx is fraction"},
+      "war_story": {
+        "setup": "Owner-side mandate to take a $550M non-ferrous program from FEL 1 through FEL 3 to FEED-ready, stage-gated through internal IC.",
+        "conflict": "FEL 2 estimate vs EPC market pricing diverged at FEL 3 entry. Stage-gate at risk.",
+        "decision": "Restructured contracting strategy and tightened scope-freeze discipline before authorising detailed engineering.",
+        "result": "FEL 3 closure into IC submission within window.",
+        "lesson": "FEL 2 to 3 transition is where 60% of CapEx overruns are seeded. Stage-gate discipline matters more than estimate accuracy."
+      },
+      "industry_intel_gained": [
+        "Russian/CIS EPC market pricing dynamics 2023-2025, delta to international benchmark",
+        "FEL 3 readiness criteria (process design freeze, P&ID issued, long-lead PO authorisations)",
+        "How IC committees in Russian industrial groups read FEL 3 packages"
+      ],
+      "citation": {
+        "public": "Project Director on a $550M CapEx program at UMMC, FEL 1 through FEL 3.",
+        "nda_with_buyer": "Specific contracting strategy, scope-freeze methodology, stage-gate criteria.",
+        "private_retainer": "Internal IC dynamics, named stakeholders, gate decisions."
+      },
+      "use_in_dd_sections": ["author_credentials", "capex_methodology", "fel_assessment", "contracting_strategy", "ic_readiness"]
+    },
+    {
+      "id": "ummc-gold-tailings-greenfield",
+      "title": "FEL Director, gold-from-tailings greenfield, ~50 bn RUB",
+      "company": "UMMC",
+      "years": "2021-2023",
+      "role": "FEL 1-3 Director",
+      "tags": ["gold", "tailings-retreatment", "greenfield", "hydromet", "cil", "cip", "fel"],
+      "scale": {"rub": 50000000000, "note": "Greenfield gold recovery from historical tailings"},
+      "war_story": {
+        "setup": "Historical tailings with residual gold above marginal cut-off. Greenfield retreatment plant, FEL 1.",
+        "conflict": "Cyanide leach kinetics on weathered tailings diverged from fresh-ore lab data. Recovery curve flatter.",
+        "decision": "Reordered FEL 2 testwork to prioritise grind-vs-recovery over throughput-vs-CapEx.",
+        "result": "FEL 3 entered with corrected metallurgical balance.",
+        "lesson": "On tailings retreatment, weathering chemistry breaks ore-body analogies. Insist on aged-sample testwork before FEL 2 closure."
+      },
+      "industry_intel_gained": [
+        "Aged tailings cyanide leach kinetics: 35-55% recovery vs 75-90% on fresh ore at same grind",
+        "Detox circuit sizing for tailings retreatment, SO2/air vs hydrogen peroxide",
+        "Permitting nuances for tailings retreatment in RF (re-classification as ore source)"
+      ],
+      "citation": {
+        "public": "Directed FEL 1-3 on a gold-from-tailings greenfield, ~50 bn RUB, at UMMC.",
+        "nda_with_buyer": "Recovery-vs-grind methodology, testwork programme structure.",
+        "private_retainer": "Named consultants, equipment vendors, FID economics."
+      },
+      "factual_guardrail": "Gold-from-tailings. NOT copper. NOT Udokan.",
+      "use_in_dd_sections": ["author_credentials", "gold_hydromet_methodology", "tailings_retreatment", "permitting_cis"]
+    },
+    {
+      "id": "rusal-casting-40kt",
+      "title": "Casting line modernisation, 40 ktpa, CapEx 18% below benchmark",
+      "company": "UC RUSAL",
+      "years": "2017-2019",
+      "role": "Head of Technology",
+      "tags": ["aluminium", "casthouse", "downstream", "capex", "contracting", "vdc", "billet", "fel"],
+      "scale": {"capacity_ktpa": 40, "benchmark_outperformance_pct": 18},
+      "war_story": {
+        "setup": "40 ktpa casting expansion at operating smelter — VDC billet, degassing, CFF filtration. FEL 2 closed.",
+        "conflict": "EPC bid 22% above FEL 2 estimate. IC window 4 weeks.",
+        "decision": "Broke EPC into 6 discipline-specific tenders (civil/structural/mechanical/electrical/automation/refractory). Integration engineering in-house.",
+        "result": "CapEx closed 18% below benchmark. Became contracting model for two subsequent projects.",
+        "lesson": "Single-EPC pricing carries 15-25% interface premium on brownfield expansions. Owner team with metallurgical depth can disintermediate. Without bench — single EPC is correct."
+      },
+      "industry_intel_gained": [
+        "Casthouse CapEx benchmark VDC billet: $1100-1500/t annual capacity (2018-2020 USD)",
+        "Discipline tendering vs single EPC: break-even in internal engineering hours",
+        "CFF filter sizing and replacement economics, AlSi vs AlMg",
+        "TiBor grain refiner dosing vs final billet quality"
+      ],
+      "citation": {
+        "public": "On a 40 ktpa casting expansion at RUSAL I led a contracting restructure that closed CapEx 18% below industry benchmark.",
+        "nda_with_buyer": "Tender decomposition, integration engineering scope, in-source/out-source split.",
+        "private_retainer": "Vendor names, unit pricing, IC deck."
+      },
+      "use_in_dd_sections": ["author_credentials", "capex_assessment", "contracting_strategy", "epc_vs_epcm", "casthouse_dd"],
+      "default_anchor_in_pitch": true
+    },
+    {
+      "id": "rusal-7-patents",
+      "title": "7 patents on aluminium alloys and processing",
+      "company": "UC RUSAL",
+      "years": "2011-2019",
+      "role": "Co-author",
+      "tags": ["aluminium", "alloys", "metallurgy", "r-d", "ip", "patents"],
+      "scale": {"patent_count": 7},
+      "todo_anton": "Заполнить точные номера патентов (RU/EAPO/PCT), темы, со-авторов. Критично — в DD под NDA патенты цитируются по номерам.",
+      "patent_topics_summary": ["Aluminium alloy compositions", "Casting process parameters", "Heat treatment regimes"],
+      "citation": {
+        "public": "Co-author of 7 patents on aluminium alloys and processing, RUSAL technology development.",
+        "nda_with_buyer": "Patent numbers and titles available on request.",
+        "private_retainer": "Mechanism-level discussion of alloy chemistry and processing rationale."
+      },
+      "use_in_dd_sections": ["author_credentials", "alloy_assessment", "technology_assessment"]
+    },
+    {
+      "id": "rusal-capex-portfolio-12-projects",
+      "title": "CapEx portfolio, 12 projects, $350M+ aggregate",
+      "company": "UC RUSAL",
+      "years": "2017-2019",
+      "role": "Portfolio Lead, Technology",
+      "tags": ["aluminium", "capex-portfolio", "fel", "value-chain", "owner-side"],
+      "scale": {"projects": 12, "usd_aggregate": 350000000, "scope": "aluminium value chain upstream/midstream/downstream"},
+      "war_story": {
+        "setup": "12 active projects: smelting (anode plant, potroom upgrades, busbar modernisation), casthouse (multiple lines), downstream (rolling, foil).",
+        "conflict": "Portfolio-level resource conflicts. Common process engineering pool. Sequential IC submissions creating queue.",
+        "decision": "Tier-based FEL pace: Tier-1 strategic = full FEL 1-3; Tier-2 sustaining = accelerated FEL 2 to FID; Tier-3 replacement = engineering-led scope, bypassed formal FEL.",
+        "result": "IC clearances per year doubled without expanding engineering headcount.",
+        "lesson": "Not every CapEx needs full FEL. Replacement/sustaining with low scope variability is over-served by full stage-gating. Strategic/growth is under-served by anything less."
+      },
+      "industry_intel_gained": [
+        "Tier-based FEL methodology — project tier vs stage-gate intensity",
+        "Aluminium downstream sustaining CapEx norms (rolling rolls, foil annealers, packaging)",
+        "Anode plant CapEx benchmarks (green vs baked anode)",
+        "Internal IC dynamics in vertically integrated aluminium groups"
+      ],
+      "citation": {
+        "public": "Led a CapEx portfolio of 12 projects, $350M+ aggregate, across the aluminium value chain at RUSAL.",
+        "nda_with_buyer": "Tier-based FEL methodology, per-tier scope decisions.",
+        "private_retainer": "Project list, stage outcomes, IC voting."
+      },
+      "use_in_dd_sections": ["author_credentials", "capex_methodology", "portfolio_assessment", "fel_tiering"]
+    },
+    {
+      "id": "nornickel-turnaround-305",
+      "title": "Operational turnaround, 305 staff, zero LTI through campaign",
+      "company": "Norilsk Nickel",
+      "years": "2019-2021",
+      "role": "Turnaround Lead",
+      "tags": ["non-ferrous", "nickel", "pgm", "turnaround", "operations", "hse", "refining"],
+      "scale": {"staff_count": 305, "lti_count": 0},
+      "war_story": {
+        "setup": "Operational turnaround mandate, downstream refining, multi-shift, 305 direct reports + contractor labour.",
+        "conflict": "HSE incident frequency trending up. Production targets requiring overtime. Stress cycle.",
+        "decision": "Inverted priority: HSE first, throughput second, cost third. Used 90-day window to retrain supervision on critical-control verification before pushing throughput.",
+        "result": "Zero LTI through campaign. Throughput targets met by month 5.",
+        "lesson": "Turnarounds done HSE-throughput-cost succeed. Reverse order eventually pays the safety bill back with interest."
+      },
+      "industry_intel_gained": [
+        "Norilsk Nickel refining flowsheet (matte → chloride/carbonyl → cathode Ni, Cu, Co, PGM)",
+        "Critical-control framework for non-ferrous refining (energy isolation, molten metal, process gas)",
+        "PGM stream commercial dynamics, anode slimes economics",
+        "Russian Arctic operational constraints (logistics windows, manpower retention)"
+      ],
+      "citation": {
+        "public": "Led an operational turnaround at Norilsk Nickel, 305 staff under direct management, zero LTI through campaign.",
+        "nda_with_buyer": "HSE intervention methodology, throughput recovery sequence.",
+        "private_retainer": "Site identification, stakeholder names, KPI baselines."
+      },
+      "use_in_dd_sections": ["author_credentials", "turnaround_methodology", "operations_assessment", "hse_review", "nickel_pgm_dd"]
+    },
+    {
+      "id": "erg-mckinsey-capex-transformation",
+      "title": "CapEx portfolio transformation, internal lead, McKinsey workstream",
+      "company": "ERG (Eurasian Resources Group)",
+      "years": "2015-2017",
+      "role": "Internal Lead",
+      "tags": ["capex-transformation", "ferrochrome", "alumina", "non-ferrous", "kazakhstan", "consulting-interface"],
+      "scale": {"note": "Group-level CapEx portfolio, multi-asset Kazakhstan operations"},
+      "war_story": {
+        "setup": "Group CapEx transformation with McKinsey. Internal team paired with consultant pod. Multi-asset: ferrochrome (Aktobe/Aksu), alumina (Pavlodar), iron ore, coal.",
+        "conflict": "Consultant playbook assumed standard FEL. Group reality: legacy projects mid-execution, mixed Soviet-era and Western methodology, speed over rigour.",
+        "decision": "Built hybrid methodology: clean structure for new work, separate legacy track for in-flight projects.",
+        "result": "Transformation closed. Methodology adopted on subsequent CapEx waves.",
+        "lesson": "Greenfield consultant methodology cannot be force-fitted onto brownfield portfolios. Hybrid track design is the deliverable."
+      },
+      "industry_intel_gained": [
+        "Kazakhstan non-ferrous regulatory environment, subsoil law, contract-mining",
+        "Ferrochrome CapEx benchmarks (Aktobe vs international peers)",
+        "Alumina refinery process and CapEx norms (Bayer digestion intensity)",
+        "How McKinsey/Bain/BCG run mining CapEx engagements — internal team interface"
+      ],
+      "citation": {
+        "public": "Internal lead on a CapEx portfolio transformation at ERG, conducted with McKinsey.",
+        "nda_with_buyer": "Hybrid methodology specifics, deliverables.",
+        "private_retainer": "Project-level outcomes, named consultant counterparts."
+      },
+      "use_in_dd_sections": ["author_credentials", "capex_methodology", "consulting_interface", "kazakhstan_dd"]
+    },
+    {
+      "id": "advisory-aluminium-kazakhstan-dd-2024",
+      "title": "Independent DD, 250 ktpa aluminium asset Kazakhstan, deal killed",
+      "company": "Independent advisory (PE fund client)",
+      "years": "2024",
+      "role": "Independent Advisor",
+      "tags": ["aluminium", "smelting", "dd", "kazakhstan", "deal-killer", "energy"],
+      "scale": {"asset_capacity_ktpa": 250},
+      "war_story": {
+        "setup": "PE fund considering 250 ktpa aluminium smelter in Kazakhstan. Stated expansion CapEx, asserted energy cost stability. Two-week DD window.",
+        "conflict": "Public-source review of regional energy tariff trajectory and asset power contract structure didn't match management representation.",
+        "decision": "Wrote up energy-cost exposure as primary deal risk. Listed three killer questions for management session.",
+        "result": "Client walked from deal after management could not answer killer questions.",
+        "lesson": "On commodities assets the metallurgy is rarely the deal-killer. Power contract structure is. Read the power agreement before the metallurgy."
+      },
+      "industry_intel_gained": [
+        "Kazakhstan power tariff escalation mechanism for industrial consumers",
+        "Aluminium smelter cost-curve sensitivity to power tariff delta",
+        "PE buyer-side decision dynamics on DD red flags"
+      ],
+      "citation": {
+        "public": "Conducted independent DD on a 250 ktpa aluminium asset in Kazakhstan; client walked from deal after DD-identified risks were unanswered at management session.",
+        "nda_with_buyer": "DD methodology, killer questions, full risk register.",
+        "private_retainer": "Client identity, asset identity, deal economics."
+      },
+      "use_in_dd_sections": ["author_credentials", "dd_methodology", "kazakhstan_context", "aluminium_smelter_dd", "energy_dd"]
+    },
+    {
+      "id": "advisory-glg-aluminium-turnaround-2025",
+      "title": "Expert call, aluminium smelter turnaround risks, GLG",
+      "company": "GLG client (international IB)",
+      "years": "2025",
+      "role": "Expert (platform)",
+      "tags": ["aluminium", "turnaround", "potline", "expert-call", "glg"],
+      "war_story": {
+        "setup": "GLG dispatched call from international IB modelling aluminium asset for IPO advisory.",
+        "conflict": "Their valuation model assumed turnaround duration and CapEx not matching operational reality.",
+        "decision": "Used three reference turnaround windows to triangulate realistic durations and provisioning.",
+        "result": "Client adjusted model. Confirmed via platform follow-up.",
+        "lesson": "Bank analysts modelling commodities universally under-provision for turnarounds. Structurally consistent. Pricing-relevant for DD."
+      },
+      "industry_intel_gained": [
+        "Aluminium potline turnaround duration norms: planned 22-30 days, unplanned recovery 60-90 days",
+        "Potline relining CapEx benchmark per pot type and current density",
+        "How IB analysts model turnaround CapEx and why they get it wrong"
+      ],
+      "citation": {
+        "public": "Expert call via GLG on aluminium smelter turnaround dynamics, supported a major IB's IPO advisory modelling.",
+        "nda_with_buyer": "Platform-handled.",
+        "private_retainer": "n/a"
+      },
+      "use_in_dd_sections": ["author_credentials", "turnaround_methodology", "ib_modelling_perspective"]
+    },
+    {
+      "id": "advisory-anode-furnace-negotiation",
+      "title": "Vendor DD and negotiation, Chinese anode furnace, 12% price reduction",
+      "company": "Aluminium producer (confidential)",
+      "years": "2024",
+      "role": "Independent Advisor",
+      "tags": ["aluminium", "procurement", "vendor-dd", "china-suppliers", "anode-furnace", "negotiation"],
+      "scale": {"price_reduction_pct": 12, "warranty_improvement": "extended terms"},
+      "war_story": {
+        "setup": "Client engaged Chinese anode furnace OEM for downstream installation. Initial bid above budget. Client lacked in-house benchmark.",
+        "conflict": "Standard OEM one-price negotiation. Client risked accepting or losing supplier.",
+        "decision": "Built benchmark from three peer references + one internal reference. Decomposed total price into core, auxiliaries, services, spares. Identified two soft components where Chinese vendors over-price for Western buyers.",
+        "result": "12% price reduction, extended warranty, free commissioning.",
+        "lesson": "Chinese OEM pricing for non-Chinese buyers carries 10-20% 'unfamiliar buyer' premium that disappears with credible benchmark."
+      },
+      "industry_intel_gained": [
+        "Anode furnace pricing structure (core/auxiliaries/services/spares splits)",
+        "Chinese OEM negotiation dynamics — what they will and will not move on",
+        "Warranty norms 12mo vs 24mo and what 'extended' actually unlocks"
+      ],
+      "citation": {
+        "public": "Advised aluminium producer on a Chinese anode furnace supplier negotiation, 12% price reduction and extended warranty.",
+        "nda_with_buyer": "Benchmark methodology, decomposition framework, negotiation script.",
+        "private_retainer": "Client/supplier identity, exact pricing."
+      },
+      "use_in_dd_sections": ["vendor_dd", "procurement_assessment", "china_supplier_dynamics", "negotiation_prep"]
+    },
+    {
+      "id": "rusal-smelter-potroom-modernisation",
+      "title": "Potroom modernisation, busbar architecture upgrade",
+      "company": "UC RUSAL",
+      "years": "2014-2016",
+      "role": "Technology Lead",
+      "tags": ["aluminium", "smelter", "potroom", "busbar", "current-efficiency", "energy"],
+      "todo_anton": "Подтвердить: какая технология (RA-300/RA-400/RA-500?), фактический gain current efficiency, scope CapEx",
+      "industry_intel_gained_placeholder": [
+        "Busbar magnetic field compensation principles",
+        "ACD optimisation vs current density",
+        "Energy outcome per current efficiency point on Soviet-design potlines"
+      ],
+      "use_in_dd_sections": ["aluminium_smelter_dd", "potroom_assessment", "energy_optimisation"]
+    },
+    {
+      "id": "rusal-alumina-supply-quality",
+      "title": "Alumina supply quality dispute resolution",
+      "company": "UC RUSAL",
+      "years": "2012-2015",
+      "role": "Technical Lead",
+      "tags": ["aluminium", "alumina", "smelter-grade-alumina", "supply-quality"],
+      "todo_anton": "Заполнить если кейс был — квалификация альтернативных поставщиков SGA, борьба с примесями Na/Fe/Si",
+      "industry_intel_gained_placeholder": [
+        "SGA specification (Na2O, SiO2, Fe2O3, LOI tolerances)",
+        "How impurities propagate through Hall-Héroult and casthouse",
+        "Alumina supplier quality differentiation globally"
+      ],
+      "use_in_dd_sections": ["aluminium_smelter_dd", "feedstock_assessment"]
+    },
+    {
+      "id": "nornickel-pgm-recovery",
+      "title": "PGM recovery stream optimisation",
+      "company": "Norilsk Nickel",
+      "years": "2020",
+      "role": "Technical Lead",
+      "tags": ["nickel", "pgm", "anode-slimes", "refining"],
+      "todo_anton": "Заполнить детали — Talnakh PGM stream, конкретные изменения, outcome",
+      "industry_intel_gained_placeholder": [
+        "PGM concentration in anode slimes from nickel electrorefining",
+        "Pd/Pt/Rh separation economics at Russian facilities",
+        "PGM by-product credits market dynamics"
+      ],
+      "use_in_dd_sections": ["nickel_pgm_dd", "refining_assessment"]
+    }
+  ],
+
+  "anti_cases": {
+    "note": "What Anton has NOT done. Triggers calibrated 'I don't know' in DD scope conversations.",
+    "out_of_scope": [
+      {"domain": "Indonesian nickel HPAL", "reason": "Adjacent process knowledge from Norilsk Nickel; no direct exposure to Indonesian laterite HPAL"},
+      {"domain": "African copper deep operational", "reason": "Strategic literacy from market work; no direct operational role on Zambian/DRC assets"},
+      {"domain": "Lithium chemistry (brine or spodumene)", "reason": "Not in portfolio. CapEx logic transfers, chemistry does not"},
+      {"domain": "Rare earths separation chemistry", "reason": "Strategic awareness only; separation chemistry is specialised"},
+      {"domain": "Indian steel value chain", "reason": "No direct engagement"},
+      {"domain": "South American copper concentrators specifically", "reason": "Sector literacy yes; specific Chilean/Peruvian operational reality no"},
+      {"domain": "Coal mining and processing detailed", "reason": "Not in portfolio"}
+    ],
+    "bridge_template_en": "My direct experience is in [X], not [Y], but the [Z] dynamics across non-ferrous projects are structurally similar. I can comment on [bridge topic]. For [Y]-specific data I'd recommend a colleague.",
+    "bridge_template_ru": "Прямой опыт у меня в [X], не [Y], но [Z] динамика в non-ferrous проектах структурно похожа. Могу прокомментировать [bridge topic]. По [Y]-специфике порекомендую коллегу."
+  },
+
+  "industry_intel_consolidated": {
+    "purpose": "Cross-case benchmarks Anton has direct line-of-sight to. Use in DD §6 CapEx assessment and §4 technology assessment.",
+    "aluminium_smelter": {
+      "current_efficiency_pct": {"top_tier": "92-96", "investigate_below": "90"},
+      "specific_energy_kwh_per_kg_al": {"modern": "13.0-13.5", "legacy_soviet": "14.0+"},
+      "anode_cathode_distance_cm": "4.0-5.0",
+      "potline_relining_window_days": "1800-2500",
+      "anode_change_cycle_days": "22-30",
+      "greenfield_capex_usd_per_t_annual": "4500-6500 power-dependent",
+      "brownfield_expansion_capex_usd_per_t_annual": "2500-4000",
+      "planned_turnaround_days": "22-30",
+      "unplanned_recovery_days": "60-90"
+    },
+    "aluminium_casthouse": {
+      "vdc_billet_capex_usd_per_t_annual": "1100-1500",
+      "slab_caster_capex_usd_per_t_annual": "1500-2200",
+      "cff_filter_replacement_hours": "8-72 alloy/impurity-dependent",
+      "tibor_dosing_kg_per_t": "1.5-3.0 typical for billet"
+    },
+    "nickel_refining": {
+      "matte_grade_pct_ni": "65-78 from flash smelting",
+      "anode_slime_pgm_grade": "varies; Norilsk feed PGM-rich vs global"
+    },
+    "gold_hydromet": {
+      "cil_recovery_fresh_oxide_pct": "92-96",
+      "cil_recovery_transitional_pct": "60-85",
+      "cil_recovery_aged_tailings_pct": "35-55 (Anton's UMMC experience)",
+      "carbon_loading_g_au_per_kg": "3000-6000"
+    },
+    "fel_methodology": {
+      "fel_1_estimate_accuracy_pct": "±50",
+      "fel_2_estimate_accuracy_pct": "±25-30",
+      "fel_3_estimate_accuracy_pct": "±10-15",
+      "fel_1_engineering_pct": "0-3",
+      "fel_2_engineering_pct": "10-20",
+      "fel_3_engineering_pct": "30-40",
+      "feed_engineering_pct": "60-90",
+      "ifc_engineering_pct": "100"
+    }
+  },
+
+  "factual_guardrails_critical": [
+    "UMMC gold-from-tailings is GOLD, not copper. Distinct from Udokan (USM).",
+    "Udokan = USM entity. Anton applied there but no engagement.",
+    "RUSAL portfolio = aluminium only. UMMC ≠ aluminium for Anton's role.",
+    "$550M UMMC = TOTAL PROGRAM SCOPE multi-phase. Single-year disclosed CapEx is a fraction. Frame as 'program scope'.",
+    "7 patents = all RUSAL employer, aluminium domain.",
+    "0 LTI at Norilsk Nickel = within Anton's 305-staff campaign, not group-wide.",
+    "Knowledge Ridge = one paid call + one pro-bono article only. Not active revenue.",
+    "Anton has NEVER worked at: Rio Tinto, BHP, Glencore, Vale, EGA, Alcoa, Hydro, RUSAL Guinea subsidiary. Don't claim adjacent."
+  ]
+}
